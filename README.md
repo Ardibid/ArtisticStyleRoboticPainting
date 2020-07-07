@@ -27,6 +27,24 @@ The project is under development in two branches:
 
 (will be added later)
 
+## Installation
+Use [Anaconda](https://docs.conda.io/en/latest/miniconda.html) to manage the environment. (optional, but hughly recommended)
+```bash
+conda create -n python37 python=3.7
+source activate python37
+git clone https://github.com/Ardibid/ArtisticStyleRoboticPainting.git
+cd ArtisticStyleRoboticPainting
+```
+
+Install dependencies by running this script:
+```bash
+ pip3 install -r requirements.txt
+```
+or 
+```bash
+ python -m pip install -r requirements.txt
+```
+
 ## Structure
 
 The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic control process.
