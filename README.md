@@ -23,11 +23,11 @@ The project is under development in two branches:
   - [ ] Robotic painting using stylized brushstrokes.
   
 --------------------------------------------------------------
-## Publication
+# Publication
 
 (will be added later)
 
-## Installation
+# Installation
 Use [Anaconda](https://docs.conda.io/en/latest/miniconda.html) to manage the environment. (optional, but hughly recommended)
 ```bash
 conda create -n python37 python=3.7
@@ -35,6 +35,12 @@ source activate python37
 git clone https://github.com/Ardibid/ArtisticStyleRoboticPainting.git
 cd ArtisticStyleRoboticPainting
 ```
+
+### Dependencies
+* [Tensorflow](https://www.tensorflow.org/) 2.2.0
+* Numpy 1.18.2
+* Sklearn 0.22.2 
+* Scipy 1.4.1
 
 Install dependencies by running this script:
 ```bash
@@ -52,6 +58,7 @@ The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic con
 ### The data set:
 
 The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image.
+Use ![this notebook](./Notebooks/Motion and image processing-Visualizations.ipynb) to process and review data.
 <!-- ![Data collection](./media/data_collection.png) -->
 <p align="center">   <img width="460" height="%50" src="./media/data_collection.png"> </p>
 
