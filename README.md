@@ -1,6 +1,11 @@
 # Artistic Style Robotic Painting
-by: Ardavan Bidgoli, Manuel Rodriguez Ladrón de  Guevara, Cinnie Hsiung, Jean Oh, Eunsu Kang  
-A research project on applying artistic style for robotic painting. The project is under development in two branches:
+by: Ardavan Bidgoli, Manuel Rodriguez Ladrón de  Guevara, Cinnie Hsiung, Jean Oh, Eunsu Kang
+A research project on applying artistic style for robotic painting. 
+
+[![Quick demo of our robot painting!](https://img.youtube.com/vi/UUFIJr9iQuA/0.jpg)](https://www.youtube.com/watch?v=UUFIJr9iQuA)
+
+
+The project is under development in two branches:
 
 1. Applying Artistic Style 
   - [x] Playback: Colelcting user's brushstrokes and reproduce them on a robot.
@@ -17,12 +22,28 @@ A research project on applying artistic style for robotic painting. The project 
 (will be added later)
 
 ## Structure
-* The data set:
-The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image. 
-**Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
-**Brtushstrokes** are scanned and converted to fixed size images and saved as a numpy array.
+The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic control process.
 
-# Usage
+### The data set:
+The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image. 
+![Data collection](./media/data_collection.png) 
+
+**Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
+
+**Brtushstrokes** are scanned and converted to fixed size images and saved as a numpy array.
+![sample gird of brushstrokes](./media/brushstrokes.png)
+
+# Tests
+
+
+
+## Robotic setup
+We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
+![Robotic setup](./media/robot_setup.jpeg)
+
+## Generating new samples
+We used a VAE to generate new samples of brushstrokes. 
+![navigating VAE's latent space to create new brush strokes](./media/generated_brushes.gif)
 
 
 
