@@ -19,7 +19,7 @@ The project is under development in two branches:
 2. Painting using a robotic arm:
     - [x] Painting abstract images using robotic plain brushstrokes
 
-* The ultimate goal is to combine the two branches:
+- The ultimate goal is to combine the two branches:
   - [ ] Robotic painting using stylized brushstrokes.
   
 --------------------------------------------------------------
@@ -37,28 +37,33 @@ cd ArtisticStyleRoboticPainting
 ```
 
 ### Dependencies
+* Python 3.7
 * [Tensorflow](https://www.tensorflow.org/) 2.2.0
 * Numpy 1.18.2
-* Sklearn 0.22.2 
+* Sklearn 0.22.2
 * Scipy 1.4.1
 
 Install dependencies by running this script:
+
 ```bash
  pip3 install -r requirements.txt
 ```
-or 
+
+or
+
 ```bash
  python -m pip install -r requirements.txt
 ```
+
+--------------------------------------------------------------
 
 ## Structure
 
 The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic control process.
 
-### The data set:
+### The data set
 
-The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image.
-Use ![this notebook](./Notebooks/Motion and image processing-Visualizations.ipynb) to process and review data.
+The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image. Use [this notebook](./Notebooks/Motion_and_image_processing_visualizations.ipynb) to process and review data.
 <!-- ![Data collection](./media/data_collection.png) -->
 <p align="center">   <img width="460" height="%50" src="./media/data_collection.png"> </p>
 
@@ -68,8 +73,10 @@ Use ![this notebook](./Notebooks/Motion and image processing-Visualizations.ipyn
 <!-- ![sample gird of brushstrokes](./media/brushstrokes.png) -->
 <p align="center">   <img width="460" height="%50" src="./media/brushstrokes.png"> </p>
 
-# Tests
+--------------------------------------------------------------
 
+# Tests
+[WIP]
 ## Robotic setup
 
 We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
