@@ -1,4 +1,5 @@
-# ArtisticStyleRoboticPainting
+# Artistic Style Robotic Painting
+by: Ardavan Bidgoli, Manuel Rodriguez Ladrón de  Guevara, Cinnie Hsiung, Jean Oh, Eunsu Kang  
 A research project on applying artistic style for robotic painting. The project is under development in two branches:
 
 1. Applying Artistic Style 
