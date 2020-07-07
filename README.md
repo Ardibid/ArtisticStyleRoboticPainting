@@ -21,7 +21,8 @@ The project is under development in two branches:
 
 * The ultimate goal is to combine the two branches:
   - [ ] Robotic painting using stylized brushstrokes.
-
+  
+--------------------------------------------------------------
 ## Publication
 
 (will be added later)
@@ -33,21 +34,26 @@ The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic con
 ### The data set:
 
 The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image.
-![Data collection](./media/data_collection.png)
+<!-- ![Data collection](./media/data_collection.png) -->
+<p align="center">   <img width="460" height="%50" src="./media/data_collection.png"> </p>
 
 **Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
 
 **Brtushstrokes** are scanned and converted to fixed size images and saved as a numpy array.
-![sample gird of brushstrokes](./media/brushstrokes.png)
+<!-- ![sample gird of brushstrokes](./media/brushstrokes.png) -->
+<p align="center">   <img width="460" height="%50" src="./media/brushstrokes.png"> </p>
 
 # Tests
 
 ## Robotic setup
 
 We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
-![Robotic setup](./media/robot_setup.jpeg)
+<!-- ![Robotic setup](./media/robot_setup.jpeg) ![Robot paints](./media/robot_paints.PNG) -->
+<!-- <p align="center"> <img width="460" height="%50" src="./media/robot_setup.jpeg"> </p> -->
+<p align="center"> <img width="460" height="%50" src="./media/robot_paints.PNG"> </p>
 
 ## Generating new samples
 
 We used a VAE to generate new samples of brushstrokes.
-![navigating VAE's latent space to create new brush strokes](./media/generated_brushes.gif)
+<!-- ![navigating VAE's latent space to create new brush strokes](./media/generated_brushes.gif) -->
+<p align="center"> <img width="460" height="%50" src="./media/generated_brushes.gif"> </p>
