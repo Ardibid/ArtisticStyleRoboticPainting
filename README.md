@@ -1,6 +1,6 @@
 # Artistic Style Robotic Painting
 
-by: Ardavan Bidgoli, Manuel Rodriguez Ladrón de  Guevara, Cinnie Hsiung, Jean Oh, Eunsu Kang
+by: [Ardavan Bidgoli](ardavan.io), Manuel Rodriguez Ladrón de  Guevara, Cinnie Hsiung, @jeanoh, Eunsu Kang
 A research project on applying artistic style for robotic painting.
 
 <p align="center">
@@ -95,11 +95,16 @@ The data set contains +700 examples of brushstrokes demonstrated by a user. Each
 </div>
 
 **Brtushstrokes** are scanned and converted to fixed size images and saved as a numpy array.
-<!-- ![sample gird of brushstrokes](./media/brushstrokes.png) -->
-<p align="center">   <img width="200" src="./media/brushstrokes.png"> </p>
 
---------------------------------------------------------------
+<div  align="center">   
+  <img width="20%"  src="./media/brushstrokes_01.jpg">
+  <img width="20%"  src="./media/brushstrokes_02.jpg">
+  <img width="20%"  src="./media/brushstrokes_03.jpg">
+  <img width="20%"  src="./media/brushstrokes_04.jpg">
+  <p style="font-size:12px"> Scanned brushstrokes. </p>
+</div>
 
+-------
 # Tests
 [WIP]
 ## Robotic setup
