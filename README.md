@@ -24,8 +24,22 @@ The project is under development in two branches:
   
 --------------------------------------------------------------
 # Publication
+**Artistic Style in Robotic Painting: a Machine Learning Approach to Learning Brushstroke from Human Artists**
+[[arXiv](https://arxiv.org/abs/2007.03647)]
 
-(will be added later)
+Robotic painting has been a subject of interest among both artists and roboticists since the 1970s. Researchers and interdisciplinary artists have employed various painting techniques and human-robot collaboration models to create visual mediums on canvas. One of the challenges of robotic painting is to apply a desired artistic style to the painting. Style transfer techniques with machine learning models have helped us address this challenge with the visual style of a specific painting. However, other manual elements of style, i.e., painting techniques and brushstrokes of an artist have not been fully addressed. We propose a method to integrate an artistic style to the brushstrokes and the painting process through collaboration with a human artist. In this paper, we describe our approach to 1) collect brushstrokes and hand-brush motion samples from an artist, and 2) train a generative model to generate brushstrokes that pertains to the artist's style, and 3) integrate the learned model on a robot arm to paint on a canvas. In a preliminary study, 71% of human evaluators find our robot's paintings pertaining to the characteristics of the artist's style.
+### Citation
+If you find our paper and dataset useful in your research, please consider citing:
+``` 
+@misc{bidgoli2020artistic,
+    title={Artistic Style in Robotic Painting; a Machine Learning Approach to Learning Brushstroke from Human Artists},
+    author={Ardavan Bidgoli and Manuel Ladron De Guevara and Cinnie Hsiung and Jean Oh and Eunsu Kang},
+    year={2020},
+    eprint={2007.03647},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO}
+}
+```
 
 # Installation
 Use [Anaconda](https://docs.conda.io/en/latest/miniconda.html) to manage the environment. (optional, but highly recommended)
@@ -69,20 +83,20 @@ The data set contains +700 examples of brushstrokes demonstrated by a user. Each
 
 **Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
 <div  align="center">   
-  <img height="150"  src="./media/marker_rigidbody.jpg">
-  <img height="150"   src="./media/data_collection_closeup.jpg"> 
-  <img height="150"   src="./media/motion_capture.gif"> 
+  <img height="100"  src="./media/marker_rigidbody.jpg">
+  <img height="100"   src="./media/data_collection_closeup.jpg"> 
+  <img height="100"   src="./media/motion_capture.gif"> 
   <p style="font-size:12px"> The tracker rigidbody (left), the brush with tracker installed and paperholder rigidbody (center), recording samples by motion capture (right). </p>
 </div>
 
 <div  align="center">   
-  <img height="400"   src="./media/manual_samples.gif">
+  <img height="250"   src="./media/manual_samples.gif">
   <p style="font-size:12px"> Manual data collection process. </p>
 </div>
 
 **Brtushstrokes** are scanned and converted to fixed size images and saved as a numpy array.
 <!-- ![sample gird of brushstrokes](./media/brushstrokes.png) -->
-<p align="center">   <img width="460" height="%50" src="./media/brushstrokes.png"> </p>
+<p align="center">   <img width="200" src="./media/brushstrokes.png"> </p>
 
 --------------------------------------------------------------
 
