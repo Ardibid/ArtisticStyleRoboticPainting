@@ -1,7 +1,8 @@
 # Artistic Style Robotic Painting
 
-by: [Ardavan Bidgoli](ardavan.io), Manuel Rodriguez Ladrón de  Guevara, Cinnie Hsiung, @jeanoh, Eunsu Kang
-A research project on applying artistic style for robotic painting.
+by: [Ardavan Bidgoli](ardavan.io), [Manuel Rodriguez Ladrón de  Guevara](https://github.com/manuelladron) , [Cinnie Hsiung](https://github.com/cinniehsiung?tab=overview&from=2017-01-01&to=2017-01-31), [Jean Oh](https://github.com/jeanoh) , [Eunsu Kang](https://github.com/kangeunsu)
+
+This project aims to develop a method to integrate an artistic style to the brushstrokes and the painting process through collaboration with a human artist. In this paper, we describe our approach to 1) collect brushstrokes and hand-brush motion samples from an artist, and 2) train a generative model to generate brushstrokes that pertains to the artist's style, and 3) integrate the learned model on a robot arm to paint on a canvas.
 
 <p align="center">
   <a href= "https://www.youtube.com/watch?v=UUFIJr9iQuA">
@@ -9,6 +10,19 @@ A research project on applying artistic style for robotic painting.
   </a>
 </p>
 
+### Table of Contents
+- [Status](#Status)
+- [Publication](#Publication)
+  - [Citation](#Citation) 
+- [Installation](#installation)
+  - [Dependencies](#Dependencies)
+- [Structure](#Structure)
+  - [Dataset](#Dataset)
+- [Test](#Test)
+  -[Robotic setup](#Robotic-setup)
+  -[New sample gneeration](#Generating-new-samples)
+----
+## Status
 The project is under development in two branches:
 
 1. Applying Artistic Style
@@ -23,11 +37,12 @@ The project is under development in two branches:
   - [ ] Robotic painting using stylized brushstrokes.
   
 --------------------------------------------------------------
-# Publication
+## Publication
 **Artistic Style in Robotic Painting: a Machine Learning Approach to Learning Brushstroke from Human Artists**
 [[arXiv](https://arxiv.org/abs/2007.03647)]
 
 Robotic painting has been a subject of interest among both artists and roboticists since the 1970s. Researchers and interdisciplinary artists have employed various painting techniques and human-robot collaboration models to create visual mediums on canvas. One of the challenges of robotic painting is to apply a desired artistic style to the painting. Style transfer techniques with machine learning models have helped us address this challenge with the visual style of a specific painting. However, other manual elements of style, i.e., painting techniques and brushstrokes of an artist have not been fully addressed. We propose a method to integrate an artistic style to the brushstrokes and the painting process through collaboration with a human artist. In this paper, we describe our approach to 1) collect brushstrokes and hand-brush motion samples from an artist, and 2) train a generative model to generate brushstrokes that pertains to the artist's style, and 3) integrate the learned model on a robot arm to paint on a canvas. In a preliminary study, 71% of human evaluators find our robot's paintings pertaining to the characteristics of the artist's style.
+
 ### Citation
 If you find our paper and dataset useful in your research, please consider citing:
 ``` 
@@ -72,13 +87,13 @@ or
 
 --------------------------------------------------------------
 
-## Structure
+# Structure
 
 The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic control process.
 
-### The data set
+### Dataset
 
-The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image. Use [this notebook](./Notebooks/Motion_and_image_processing_visualizations.ipynb) to process and review data.
+The dataset contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image. Use [this notebook](./Notebooks/Motion_and_image_processing_visualizations.ipynb) to process and review data.
 <!-- ![Data collection](./media/data_collection.png) -->
 
 **Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
@@ -110,12 +125,43 @@ The data set contains +700 examples of brushstrokes demonstrated by a user. Each
 ## Robotic setup
 
 We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
-<!-- ![Robotic setup](./media/robot_setup.jpeg) ![Robot paints](./media/robot_paints.PNG) -->
-<!-- <p align="center"> <img width="460" height="%50" src="./media/robot_setup.jpeg"> </p> -->
-<p align="center"> <img width="200" height="%50" src="./media/robot_replay.gif"> </p>
 
+<!-- <div  align="center">   
+  <img height="250"   src="./media/robot_replay.gif">
+  <img height="250"   src="./media/robot_painting_process.gif">
+  <p style="font-size:12px"> Manual data collection process. </p>
+</div> -->
+### Robotic replay
+In this test, the robotic arm replays the exact sequence of poses demonstrated by the users. The results were closely similar to the samples created by the user.
+<!-- <p align="center"> <img width="200" height="%50" src="./media/robot_replay.gif"> </p> -->
+<div  align="center">   
+  <img width="200"  src="./media/robot_replay.gif">
+  <img height="150px"  src="./media/brushes_survey.png">
+  <p style="font-size:12px"> Robotic arm replaying recorded brushstrokes, survey results indicated that users cannot meaningfully recognize the hand-drawn brushstrokes from the robotically-drawn ones.</p>
+</div>
+
+### Robotic painting
+In this test, we use learning to paint model and rendered a given image into a sequence of brushstrokes then executed them on our robot.
+<!-- <p align="center"> <img width="400"  src="./media/robot_painting_process.gif"> </p> -->
+<div  align="center">   
+  <img height="250"  src="./media/robot_painting_process.gif">
+  <p style="font-size:12px"> Robotic arm in the process of painting. </p>
+</div>
+
+<div  align="center">   
+  <img width="15%"  src="./media/image1.jpg"> 
+  <img width="15%"  src="./media/image2.png"> 
+  <img width="15%"  src="./media/image3.png"> 
+  <img width="15%"  src="./media/brush_sequence.gif"> 
+  <img width="16%"  src="./media/painted.jpg">
+  <p style="font-size:12px"> From original image, to painting. </p>
+</div>
 ## Generating new samples
 
 We used a VAE to generate new samples of brushstrokes.
 <!-- ![navigating VAE's latent space to create new brush strokes](./media/generated_brushes.gif) -->
 <p align="center"> <img width="460" height="%50" src="./media/generated_brushes.gif"> </p>
+
+#Acknowledgments
+Ardavan Bidgoli and Manuel Ladron De Guevara thank [Computational Design Lab](http://code.arc.cmu.edu/) (CoDe Lab) for its generous support. The authors would like to express their gratitude towards the [Design Fabrication Lab](https://soa.cmu.edu/dfab) (DFab) at the School of Architecture, CMU. 
+The authors would like to thank Andrew Plesniak for his contribution to the early stages of this research.
