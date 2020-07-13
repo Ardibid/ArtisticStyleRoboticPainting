@@ -19,10 +19,12 @@ This project aims to develop a method to integrate an artistic style to the brus
 - [Structure](#Structure)
   - [Dataset](#Dataset)
 - [Test](#Test)
-  -[Robotic setup](#Robotic-setup)
-  -[New sample gneeration](#Generating-new-samples)
+  - [Robotic setup](#Robotic-setup)
+  - [New sample gneeration](#Generating-new-samples)
 ----
+
 ## Status
+
 The project is under development in two branches:
 
 1. Applying Artistic Style
@@ -98,9 +100,10 @@ The dataset contains +700 examples of brushstrokes demonstrated by a user. Each 
 
 **Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
 <div  align="center">   
-  <img height="100"  src="./media/marker_rigidbody.jpg">
-  <img height="100"   src="./media/data_collection_closeup.jpg"> 
-  <img height="100"   src="./media/motion_capture.gif"> 
+  <!-- <img height="100"  src="./media/marker_rigidbody.jpg"> -->
+  <img height="150"  src="./media/image4.jpg">
+  <img height="150"   src="./media/data_collection_closeup.jpg"> 
+  <img height="150"   src="./media/motion_capture.gif"> 
   <p style="font-size:12px"> The tracker rigidbody (left), the brush with tracker installed and paperholder rigidbody (center), recording samples by motion capture (right). </p>
 </div>
 
@@ -121,19 +124,13 @@ The dataset contains +700 examples of brushstrokes demonstrated by a user. Each 
 
 -------
 # Tests
-[WIP]
+
 ## Robotic setup
 
 We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
 
-<!-- <div  align="center">   
-  <img height="250"   src="./media/robot_replay.gif">
-  <img height="250"   src="./media/robot_painting_process.gif">
-  <p style="font-size:12px"> Manual data collection process. </p>
-</div> -->
 ### Robotic replay
 In this test, the robotic arm replays the exact sequence of poses demonstrated by the users. The results were closely similar to the samples created by the user.
-<!-- <p align="center"> <img width="200" height="%50" src="./media/robot_replay.gif"> </p> -->
 <div  align="center">   
   <img width="200"  src="./media/robot_replay.gif">
   <img height="150px"  src="./media/brushes_survey.png">
@@ -141,8 +138,9 @@ In this test, the robotic arm replays the exact sequence of poses demonstrated b
 </div>
 
 ### Robotic painting
+
 In this test, we use learning to paint model and rendered a given image into a sequence of brushstrokes then executed them on our robot.
-<!-- <p align="center"> <img width="400"  src="./media/robot_painting_process.gif"> </p> -->
+
 <div  align="center">   
   <img height="250"  src="./media/robot_painting_process.gif">
   <p style="font-size:12px"> Robotic arm in the process of painting. </p>
@@ -154,14 +152,14 @@ In this test, we use learning to paint model and rendered a given image into a s
   <img width="15%"  src="./media/image3.png"> 
   <img width="15%"  src="./media/brush_sequence.gif"> 
   <img width="16%"  src="./media/painted.jpg">
-  <p style="font-size:12px"> From original image, to painting. </p>
+  <p style="font-size:12px"> From the original image to the painting. </p>
 </div>
-## Generating new samples
+### Generating new samples
 
 We used a VAE to generate new samples of brushstrokes.
 <!-- ![navigating VAE's latent space to create new brush strokes](./media/generated_brushes.gif) -->
 <p align="center"> <img width="460" height="%50" src="./media/generated_brushes.gif"> </p>
 
-#Acknowledgments
+### Acknowledgments
 Ardavan Bidgoli and Manuel Ladron De Guevara thank [Computational Design Lab](http://code.arc.cmu.edu/) (CoDe Lab) for its generous support. The authors would like to express their gratitude towards the [Design Fabrication Lab](https://soa.cmu.edu/dfab) (DFab) at the School of Architecture, CMU. 
 The authors would like to thank Andrew Plesniak for his contribution to the early stages of this research.
