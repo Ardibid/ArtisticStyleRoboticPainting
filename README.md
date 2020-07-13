@@ -28,7 +28,8 @@ The project is under development in two branches:
 (will be added later)
 
 # Installation
-Use [Anaconda](https://docs.conda.io/en/latest/miniconda.html) to manage the environment. (optional, but hughly recommended)
+Use [Anaconda](https://docs.conda.io/en/latest/miniconda.html) to manage the environment. (optional, but highly recommended)
+
 ```bash
 conda create -n python37 python=3.7
 source activate python37
@@ -65,7 +66,9 @@ The repo is organized in two sectoins: 1) data set, 2) ML models, 3) robotic con
 
 The data set contains +700 examples of brushstrokes demonstrated by a user. Each brushstroke is availabel as a pair, 1) the sequence of brush motions in space, 2) the scanned brushstoke as an image. Use [this notebook](./Notebooks/Motion_and_image_processing_visualizations.ipynb) to process and review data.
 <!-- ![Data collection](./media/data_collection.png) -->
+<p align="center">   <img width="460" height="%50" src="./media/manual_samples.gif"> </p>
 <p align="center">   <img width="460" height="%50" src="./media/data_collection.png"> </p>
+
 
 **Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
 
@@ -82,7 +85,7 @@ The data set contains +700 examples of brushstrokes demonstrated by a user. Each
 We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
 <!-- ![Robotic setup](./media/robot_setup.jpeg) ![Robot paints](./media/robot_paints.PNG) -->
 <!-- <p align="center"> <img width="460" height="%50" src="./media/robot_setup.jpeg"> </p> -->
-<p align="center"> <img width="460" height="%50" src="./media/robot_paints.PNG"> </p>
+<p align="center"> <img width="200" height="%50" src="./media/robot_replay.gif"> </p>
 
 ## Generating new samples
 
