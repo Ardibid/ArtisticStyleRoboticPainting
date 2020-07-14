@@ -38,7 +38,6 @@ The project is under development in two branches:
 - The ultimate goal is to combine the two branches:
   - [ ] Robotic painting using stylized brushstrokes.
   
-----
 
 
 
