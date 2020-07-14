@@ -1,0 +1,1 @@
+"Final -ELBO: 54.3172, Recon Loss: 44.3513, KL Loss: 9.9658"
