@@ -143,7 +143,7 @@ We used a VAE to generate new samples of brushstrokes. The animation below demon
 
 [WIP]
 We also compared different architectures for the VAE to evaluate their performance (different from the model that generated the above gif):
-| Model | Epochs | Batch size | Hidden dim. | ELBO | Recon Loss | KL Loss |
+| Model | Epochs | Batch size | Hidden dim. | - ELBO | Recon Loss | KL Loss |
 |-------|--------|------------|------------------|------|------------|---------|
 |**MLP**|250|32|32|54.3172|44.3513| 9.9658|
 |**CNN**|250|32|32|62.9060| 52.7050| 10.2009|
