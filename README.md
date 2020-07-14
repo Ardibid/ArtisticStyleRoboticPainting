@@ -4,14 +4,12 @@ by: [Ardavan Bidgoli](ardavan.io), [Manuel Rodriguez Ladrón de  Guevara](https:
 
 #### [arXiv](https://arxiv.org/abs/2007.03647) | [YouTube](https://www.youtube.com/watch?v=UUFIJr9iQuA)
 
----
 **Artistic Style in Robotic Painting: a Machine Learning Approach to Learning Brushstroke from Human Artists**
 
 
 Robotic painting has been a subject of interest among both artists and roboticists since the 1970s. Researchers and interdisciplinary artists have employed various painting techniques and human-robot collaboration models to create visual mediums on canvas. One of the challenges of robotic painting is to apply a desired artistic style to the painting. Style transfer techniques with machine learning models have helped us address this challenge with the visual style of a specific painting. However, other manual elements of style, i.e., painting techniques and brushstrokes of an artist have not been fully addressed. We propose a method to integrate an artistic style to the brushstrokes and the painting process through collaboration with a human artist. In this paper, we describe our approach to 1) collect brushstrokes and hand-brush motion samples from an artist, and 2) train a generative model to generate brushstrokes that pertains to the artist's style, and 3) integrate the learned model on a robot arm to paint on a canvas. In a preliminary study, 71% of human evaluators find our robot's paintings pertaining to the characteristics of the artist's style.
 
 This project aims to develop a method to integrate an artistic style to the brushstrokes and the painting process through collaboration with a human artist. In this paper, we describe our approach to 1) collect brushstrokes and hand-brush motion samples from an artist, and 2) train a generative model to generate brushstrokes that pertains to the artist's style, and 3) integrate the learned model on a robot arm to paint on a canvas.
-
 
 **Table of Contents**
 
@@ -23,7 +21,7 @@ This project aims to develop a method to integrate an artistic style to the brus
 - [Acknowledgments](#Acknowledgments)
 - [Citation](#Citation)
 
-----
+
 
 ## Status
 
@@ -76,7 +74,6 @@ or
  python -m pip install -r requirements.txt
 ```
 
----
 
 # Dataset
 
@@ -108,7 +105,6 @@ The dataset contains +700 examples of brushstrokes demonstrated by a user. Each 
   <p style="font-size:12px"> Scanned brushstrokes. </p>
 </div>
 
--------
 
 # Tests
 
