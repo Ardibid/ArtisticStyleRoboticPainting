@@ -52,7 +52,6 @@ def show_samples_(samples, fname=None, nrow=10, title='Samples'):
     plt.title(title)
     plt.imshow(grid_img.permute(1, 2, 0))
     plt.axis('off')
-    print('FFNAME', fname)
     if fname is not None:
         savefig(fname, True)
     else:
