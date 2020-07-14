@@ -85,6 +85,7 @@ def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size
 if __name__ == '__main__':
 
     if len(sys.argv) != 5:
+        print (len(sys.argv))
         print("Usage: python3 vae_main.py EPOCHS, BATCH_SIZE, Z_DIMS, CNN = 1 or 0 (if 1 model=CNN else MLP)")
         sys.exit(1)
 
