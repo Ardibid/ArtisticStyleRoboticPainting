@@ -64,7 +64,10 @@ def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size
     print(f'Final -ELBO: {test_losses[-1, 0]:.4f}, Recon Loss: {test_losses[-1, 1]:.4f}, '
           f'KL Loss: {test_losses[-1, 2]:.4f}')
 
-    name_dataset = 'BrushStrokes'
+    if cnn:
+        name_dataset = 'BrushStrokes_CNN'
+    else:
+        name_dataset = 'BrushStrokes_MLP'
 
     plot_vae_training_plot(train_losses, test_losses, f'Dataset {name_dataset} Train Plot',
                            f'{save_figures_path}/plots/dset{name_dataset}_train_plot.png')
@@ -98,12 +101,13 @@ if __name__ == '__main__':
     test_dataset = MyDataset(test_data)
 
     # Create runid
+    des_model = 'cnn' if CNN else 'mlp'
     run_id = str(int(time.time()))
     if not os.path.exists('./experiments'):
         os.mkdir('./experiments')
-    os.mkdir('./experiments/%s' % run_id)
-    SAVE_PATH = './experiments/%s' % run_id
-    print("Saving models, and predictions to ./experiments/%s" % run_id)
+    os.mkdir('./experiments/{}_{}'.format(run_id, des_model))
+    SAVE_PATH = './experiments/{}_{}'.format(run_id, des_model)
+    print("Saving models, and predictions to ./experiments/{}_{}".format(run_id, des_model))
 
     if CNN:
         model = ConvVAE(Z_DIMS)

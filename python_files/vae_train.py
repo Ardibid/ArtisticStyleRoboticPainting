@@ -19,17 +19,12 @@ def train(model, train_loader, optimizer, epoch, cnn):
     for batch_idx, (data, _) in enumerate(train_loader):        
         data = data.to(device)
         optimizer.zero_grad()
-
         # Pass image to the model
-        if cnn != True:
-            x_recon, mu, logvar = model(data)
-        
-        else:
-            mu, logvar = model.encoder(data) # shape of each (batch_size, 16)
-            # Sample
-            z = model.sample_training(mu, logvar)
-            # Decoding sample z
-            x_recon = model.decoder(z)
+        mu, logvar = model.encoder(data) # shape of each (batch_size, 16)
+        # Sample
+        z = model.sample_training(mu, logvar)
+        # Decoding sample z
+        x_recon = model.decoder(z)
         
         # Calculate scalar loss
         loss, recon, kl = loss_function(x_recon, data, mu, logvar, cnn)
@@ -82,15 +77,11 @@ def test(model, test_loader, cnn, epoch, folder_path_reconstructions=None):
             data = data.to(device)
             
             # Pass image to the model
-            if cnn != True:
-                x_recon, mu, logvar = model(data) # MLP
-            
-            else:
-                mu, logvar = model.encoder(data) # shape of each (batch_size, 16)
-                # Sample
-                z = model.sample_training(mu, logvar)
-                # Decoding sample z
-                x_recon = model.decoder(z)
+            mu, logvar = model.encoder(data) # shape of each (batch_size, 16)
+            # Sample
+            z = model.sample_training(mu, logvar)
+            # Decoding sample z
+            x_recon = model.decoder(z)
             
             loss, recon, kl = loss_function(x_recon, data, mu, logvar, cnn)
             
@@ -101,13 +92,15 @@ def test(model, test_loader, cnn, epoch, folder_path_reconstructions=None):
             
             # Visualize the reconstructions once per epoch
             if i == 0:
-                n = min(batch_size, 10) 
-                
+                n = 8
                 # x_recon = torch.sigmoid(x_recon) if no sigmoid in decoder's last layer
                 comparison = torch.cat([data[:n],
                                         x_recon.view(batch_size, 1, 32, 32)[:n]])
                 # Show and save samples
-                show_samples_(comparison.data.cpu(), folder_path_reconstructions + '/reconstructions_per_epoch/{}'.format(epoch), nrow=10)
+                des_model = 'cnn' if cnn else 'mlp'
+                show_samples_(comparison.data.cpu(),
+                              folder_path_reconstructions + '/reconstructions_per_epoch/{}'.format(epoch),
+                              nrow=n, title='Reconstruction_epoch: {}_model:{}'.format(epoch, des_model))
 
         # Divide by the whole set of images to have a normalized loss 
         test_loss /= len(test_loader.dataset)
