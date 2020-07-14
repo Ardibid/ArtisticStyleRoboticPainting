@@ -120,8 +120,7 @@ We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inve
   <p style="font-size:12px"> Robotic arm replaying recorded brushstrokes, survey results indicated that users cannot meaningfully recognize the hand-drawn brushstrokes from the robotically-drawn ones.</p>
 </div>
 
-**Robotic painting**: In this test, we use learning to paint model and rendered a given image into a sequence of brushstrokes then executed them on our robot.
-We used [LearningToPaint](https://github.com/megvii-research/ICCV2019-LearningToPaint) to convert a given image into a series of brushstrokes and then program the robot to run them. LearningToPaint outputs were in the format of quadrative curve parameters. We processed these curves in [Grasshopper](https://www.grasshopper3d.com/) plug-in for [Rhinocoros](https://www.rhino3d.com/) modeling package and converted them into a series of targets in space. These targets were converted into RAPID code, ABB's proprietary programming language, using [HAL](http://hal-robotics.com/) add-on.
+**Robotic painting**: In this test, we use learning to paint model and rendered a given image into a sequence of brushstrokes then executed them on our robot. We used [LearningToPaint](https://github.com/megvii-research/ICCV2019-LearningToPaint) to convert a given image into a series of brushstrokes and then program the robot to run them. LearningToPaint outputs were in the format of quadrative curve parameters. We processed these curves in [Grasshopper](https://www.grasshopper3d.com/) plug-in for [Rhinocoros](https://www.rhino3d.com/) modeling package and converted them into a series of targets in space. These targets were converted into RAPID code, ABB's proprietary programming language, using [HAL](http://hal-robotics.com/) add-on.
 
 <div  align="center">   
   <img width="15%"  src="./media/image1.jpg"> 
@@ -159,6 +158,15 @@ We also compared different architectures for the VAE to evaluate their performan
   <img width="30%"  src="./python_files/experiments/1594744179_cnn/plots/dsetBrushStrokes_CNN_interpolations.png"> 
 </div>
 
+### Usage
+
+To test train the models, navigate to the ```python_files``` folder and use this script:
+- python vae_main.py epochs, batch size, z dimension, layer type, plot frequency
+
+Example:
+```bash
+python vae_main.py 250 32 32 1 100
+```
 ### Acknowledgments
 
 Ardavan Bidgoli and Manuel Ladron De Guevara thank [Computational Design Lab](http://code.arc.cmu.edu/) (CoDe Lab) for its generous support. The authors would like to express their gratitude towards the [Design Fabrication Lab](https://soa.cmu.edu/dfab) (DFab) at the School of Architecture, CMU.
