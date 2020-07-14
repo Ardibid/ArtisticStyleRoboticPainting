@@ -1,0 +1,3 @@
+CNN 
+zdims = 16
+30 epochs
