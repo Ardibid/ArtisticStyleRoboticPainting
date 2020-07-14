@@ -13,7 +13,7 @@ Robotic painting has been a subject of interest among both artists and roboticis
 This project aims to develop a method to integrate an artistic style to the brushstrokes and the painting process through collaboration with a human artist. In this paper, we describe our approach to 1) collect brushstrokes and hand-brush motion samples from an artist, and 2) train a generative model to generate brushstrokes that pertains to the artist's style, and 3) integrate the learned model on a robot arm to paint on a canvas.
 
 
-## Table of Contents
+**Table of Contents**
 
 - [Status](#Status)
 - [Installation](#installation)
@@ -117,18 +117,15 @@ We set up a series of tests to investigate our approach:
 
 We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inverse kinematics as well as controlling the torque on each joint is moderated by the ABB drivers. We feed the robot with a sequence of target poses.
 
-**Robotic replay**
-
-In this test, the robotic arm replays the exact sequence of poses demonstrated by the users. The results were closely similar to the samples created by the user.
-<div  align="center">   
-  <img width="200"  src="./media/robot_replay.gif">
-  <img height="150px"  src="./media/brushes_survey.png">
+**Robotic replay**: In this test, the robotic arm replays the exact sequence of poses demonstrated by the users. The results were closely similar to the samples created by the user.
+<div  align="center" >   
+  <img width="20%"  src="./media/robot_replay.gif">
+  <img width="40%"  src="./media/brushes_survey.png">
   <p style="font-size:12px"> Robotic arm replaying recorded brushstrokes, survey results indicated that users cannot meaningfully recognize the hand-drawn brushstrokes from the robotically-drawn ones.</p>
 </div>
 
-**Robotic painting**
-
-In this test, we use learning to paint model and rendered a given image into a sequence of brushstrokes then executed them on our robot.
+**Robotic painting**: In this test, we use learning to paint model and rendered a given image into a sequence of brushstrokes then executed them on our robot.
+We used [LearningToPaint](https://github.com/megvii-research/ICCV2019-LearningToPaint) to convert a given image into a series of brushstrokes and then program the robot to run them. LearningToPaint outputs were in the format of quadrative curve parameters. We processed these curves in [Grasshopper](https://www.grasshopper3d.com/) plug-in for [Rhinocoros](https://www.rhino3d.com/) modeling package and converted them into a series of targets in space. These targets were converted into RAPID code, ABB's proprietary programming language, using [HAL](http://hal-robotics.com/) add-on.
 
 <div  align="center">   
   <img width="15%"  src="./media/image1.jpg"> 
@@ -139,15 +136,15 @@ In this test, we use learning to paint model and rendered a given image into a s
 </div>
 
 <div  align="center">   
-  <img height="250"  src="./media/robot_painting_process.gif">
-  <img width="250"  src="./media/painted.jpg">
+  <img width="38%"  src="./media/robot_painting_process.gif">
+  <img width="22%"  src="./media/painted.jpg">
   <p style="font-size:12px"> Robotic arm in the process of painting. </p>
 </div>
 
 ### Generating new samples
 
 We used a VAE to generate new samples of brushstrokes.
-<p align="center"> <img width="460" height="%50" src="./media/generated_brushes.gif"> </p>
+<p align="center"> <img width="60%" src="./media/generated_brushes.gif"> </p>
 
 ### Acknowledgments
 
