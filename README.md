@@ -86,14 +86,15 @@ The dataset contains +700 examples of brushstrokes demonstrated by a user. Each 
 **Brush motions** were collected using a motion capture system and a costum-made rigid-body marker. The coordinations were processed later, thus the center of coordination system is located at the center of each cell. Brushmotions are saved as numpy array.
 <div  align="center">   
   <!-- <img height="100"  src="./media/marker_rigidbody.jpg"> -->
-  <img width="15.5%"  src="./media/image4.jpg">
-  <img width="22%"   src="./media/data_collection_closeup.jpg"> 
-  <img width="22.2%"   src="./media/motion_capture.gif"> 
+  <img width="24.7%"  src="./media/image4.jpg">
+  <img width="35%"   src="./media/data_collection_closeup.jpg"> 
   <p style="font-size:12px"> The tracker rigidbody (left), the brush with tracker installed and paperholder rigidbody (center), recording samples by motion capture (right). </p>
 </div>
 
 <div  align="center">   
-  <img width="60%"   src="./media/manual_samples.gif">
+  <img width="28%"   src="./media/manual_samples.gif">
+    <img width="31.5%"   src="./media/motion_capture.gif"> 
+
   <p style="font-size:12px"> Manual data collection process. </p>
 </div>
 
