@@ -154,6 +154,10 @@ We also compared different architectures for the VAE to evaluate their performan
   <img width="30%"  src="./python_files/experiments/1594744179_cnn/plots/dsetBrushStrokes_CNN_train_plot.png"> 
 </div>
 
+<div  align="center">   
+  <img width="30%"  src="./python_files/experiments/1594745542_mlp/plots/dsetBrushStrokes_MLP_interpolations.png"> 
+  <img width="30%"  src="./python_files/experiments/1594744179_cnn/plots/dsetBrushStrokes_CNN_interpolations.png"> 
+</div>
 
 ### Acknowledgments
 
