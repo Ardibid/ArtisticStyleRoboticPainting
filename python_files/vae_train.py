@@ -60,7 +60,7 @@ def train(model, train_loader, optimizer, epoch, cnn):
     
     return losses # Dict containing a list with losses per batch 
 
-def test(model, test_loader, cnn, epoch, folder_path_reconstructions=None):
+def test(model, test_loader, cnn, epoch, folder_path_reconstructions, limit_plot):
     """
     Returns dictionary containing losses 
     """
@@ -91,7 +91,7 @@ def test(model, test_loader, cnn, epoch, folder_path_reconstructions=None):
             kl_loss += kl.item() * batch_size 
             
             # Visualize the reconstructions once per epoch
-            if i == 0:
+            if epoch%limit_plot == 0 and i == 0:
                 n = 8
                 # x_recon = torch.sigmoid(x_recon) if no sigmoid in decoder's last layer
                 comparison = torch.cat([data[:n],
@@ -116,7 +116,7 @@ def test(model, test_loader, cnn, epoch, folder_path_reconstructions=None):
         losses['kl'] = kl_loss
         return losses
     
-def train_epochs(model, train_loader, test_loader, train_args, save_model_path, cnn):
+def train_epochs(model, train_loader, test_loader, train_args, save_model_path, cnn, limit_plot):
     """
     model: class including encoder and decoder 
     train_loader test_loader: 
@@ -130,14 +130,14 @@ def train_epochs(model, train_loader, test_loader, train_args, save_model_path, 
     grad_clip = train_args.get('grad_clip', None)
     optimizer = optim.Adam(model.parameters(), lr=lr)
     model = model.to(device)
-    
     # Prepare dictionary to store losses  
     train_losses, test_losses = OrderedDict(), OrderedDict()
     best_loss = 1e30
-    
+
+
     for epoch in range(1, epochs + 1):
         train_loss = train(model, train_loader, optimizer, epoch, cnn)
-        test_loss = test(model, test_loader, cnn, epoch, save_model_path)
+        test_loss = test(model, test_loader, cnn, epoch, save_model_path, limit_plot)
 
         # Store losses 
         for k in train_loss.keys():

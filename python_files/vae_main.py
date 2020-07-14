@@ -30,7 +30,7 @@ from vae_recons_interps import reconstruct, interpolate
 from vae_dataset import *
 
 
-def train_procedure(epochs, batch_size, train_data, test_data, model, save_model_path, cnn, image_size=32):
+def train_procedure(epochs, batch_size, train_data, test_data, model, save_model_path, cnn, limit_plot, image_size=32):
 
     # 1) Get data
     train_loader = data.DataLoader(train_data, batch_size=batch_size, shuffle=True, drop_last=True)
@@ -38,7 +38,7 @@ def train_procedure(epochs, batch_size, train_data, test_data, model, save_model
 
     # 2) Train
     train_losses, test_losses = train_epochs(model, train_loader, test_loader, dict(epochs=epochs, lr=1e-3), save_model_path,
-                                            cnn)
+                                            cnn, limit_plot)
 
     train_losses = np.stack((train_losses['loss'], train_losses['recon'], train_losses['kl']),
                             axis=1)  # (total_iterations, 3)
@@ -57,8 +57,8 @@ def train_procedure(epochs, batch_size, train_data, test_data, model, save_model
     return train_losses, test_losses, samples, reconstructions, interps
 
 
-def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size, save_figures_path, cnn):
-    train_losses, test_losses, samples, reconstructions, interpolations = fn(epochs, batch_size, train_data, test_data, model, save_path, cnn)
+def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size, save_figures_path, cnn, limit_plot):
+    train_losses, test_losses, samples, reconstructions, interpolations = fn(epochs, batch_size, train_data, test_data, model, save_path, cnn, limit_plot)
     samples, reconstructions, interpolations = samples.astype('float32'), reconstructions.astype(
         'float32'), interpolations.astype('float32')
 
@@ -105,14 +105,15 @@ def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size
 
 if __name__ == '__main__':
 
-    if len(sys.argv) != 5:
-        print("Usage: python3 vae_main.py EPOCHS, BATCH_SIZE, Z_DIMS, CNN = 1 or 0 (if 1 model=CNN else MLP")
+    if len(sys.argv) != 6:
+        print("Usage: python3 vae_main.py EPOCHS, BATCH_SIZE, Z_DIMS, CNN = 1 or 0 (if 1 model=CNN else MLP, LIMIT_PLOT")
         sys.exit(1)
 
     EPOCHS = int(sys.argv[1])
     BATCH_S = int(sys.argv[2])
     Z_DIMS = int(sys.argv[3])
     CNN = True if sys.argv[4] == '1' else False
+    LIMIT_PLOT = int(sys.argv[5])
 
     # Dataset
     brush_strokes = np.load('../data_brushstrokes/brush_strokes_16x32_vae.npy')
@@ -135,6 +136,6 @@ if __name__ == '__main__':
     else:
         model = MLP_VAE(Z_DIMS)
 
-    save_results(train_dataset, test_dataset, model, SAVE_PATH, train_procedure, EPOCHS, BATCH_S, SAVE_PATH, CNN)
+    save_results(train_dataset, test_dataset, model, SAVE_PATH, train_procedure, EPOCHS, BATCH_S, SAVE_PATH, CNN, LIMIT_PLOT)
 
 
