@@ -139,10 +139,12 @@ We used [LearningToPaint](https://github.com/megvii-research/ICCV2019-LearningTo
 
 ### Generating new samples
 
-We used a VAE to generate new samples of brushstrokes.
+We used a VAE to generate new samples of brushstrokes. The animation below demonstrates the navigation over three latent vectos of a tested VAE:
 <p align="center"> <img width="60%" src="./media/generated_brushes.gif"> </p>
 
-| Model | Epochs | Batch size | Hidden dimension | ELBO | Recon Loss | KL Loss |
+[WIP]
+We also compared different architectures for the VAE to evaluate their performance (different from the model that generated the above gif):
+| Model | Epochs | Batch size | Hidden dim. | ELBO | Recon Loss | KL Loss |
 |-------|--------|------------|------------------|------|------------|---------|
 |**MLP**|250|32|32|54.3172|44.3513| 9.9658|
 |**CNN**|250|32|32|62.9060| 52.7050| 10.2009|
@@ -151,6 +153,8 @@ We used a VAE to generate new samples of brushstrokes.
   <img width="30%"  src="./python_files/experiments/1594745542_mlp/plots/dsetBrushStrokes_MLP_train_plot.png"> 
   <img width="30%"  src="./python_files/experiments/1594744179_cnn/plots/dsetBrushStrokes_CNN_train_plot.png"> 
 </div>
+
+
 ### Acknowledgments
 
 Ardavan Bidgoli and Manuel Ladron De Guevara thank [Computational Design Lab](http://code.arc.cmu.edu/) (CoDe Lab) for its generous support. The authors would like to express their gratitude towards the [Design Fabrication Lab](https://soa.cmu.edu/dfab) (DFab) at the School of Architecture, CMU.
