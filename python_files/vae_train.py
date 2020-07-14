@@ -129,6 +129,7 @@ def train_epochs(model, train_loader, test_loader, train_args, save_model_path, 
     epochs, lr = train_args['epochs'], train_args['lr']
     grad_clip = train_args.get('grad_clip', None)
     optimizer = optim.Adam(model.parameters(), lr=lr)
+    model = model.to(device)
     
     # Prepare dictionary to store losses  
     train_losses, test_losses = OrderedDict(), OrderedDict()
