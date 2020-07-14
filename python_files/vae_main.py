@@ -4,6 +4,7 @@ import torch
 import torch.utils.data as data
 import sys
 import json
+from os.path import join, dirname, exists
 import torchvision
 from torchvision import datasets, transforms
 
@@ -62,8 +63,8 @@ def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size
         'float32'), interpolations.astype('float32')
 
     print('\n----- FINAL RESULTS ------')
-    print(f'Final -ELBO: {test_losses[-1, 0]:.4f}, Recon Loss: {test_losses[-1, 1]:.4f}, '
-          f'KL Loss: {test_losses[-1, 2]:.4f}')
+    final_result = 'Final -ELBO: {:.4f}, Recon Loss: {:.4f}, KL Loss: {:.4f}'.format(test_losses[-1, 0], test_losses[-1, 1], test_losses[-1, 2])
+    print(final_result)
 
     if cnn:
         name_dataset = 'BrushStrokes_CNN'
@@ -82,6 +83,7 @@ def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size
     show_samples_(interpolations, title=f'Dataset {name_dataset} Interpolations',
                   fname=f'{save_figures_path}/plots/dset{name_dataset}_interpolations.png')
 
+
     # Write file
     results_folder =  save_figures_path + '/results/'
     if not exists(dirname(results_folder)):
@@ -96,16 +98,15 @@ def save_results(train_data, test_data, model, save_path, fn, epochs, batch_size
     with open(result_train_path, 'w') as file:
         json.dump(train_losses.tolist(), file)
     with open(result_test_path, 'w') as file2:
-        json.dump(test_losses.tolist(), file2)    
-    
-    
-    
+        json.dump(test_losses.tolist(), file2)
+
+
+
+
 if __name__ == '__main__':
 
     if len(sys.argv) != 5:
-        print("Usage: python3 vae_main.py EPOCHS, BATCH_SIZE, Z_DIMS, CNN = 1 or 0 (if 1 model=CNN else MLP)")
-        print("Example: python3 vae_main.py 5 32 32 1")
-        print("Use python or python3 based on your environment parameters.")
+        print("Usage: python3 vae_main.py EPOCHS, BATCH_SIZE, Z_DIMS, CNN = 1 or 0 (if 1 model=CNN else MLP")
         sys.exit(1)
 
     EPOCHS = int(sys.argv[1])
