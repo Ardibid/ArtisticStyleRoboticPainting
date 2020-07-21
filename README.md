@@ -138,8 +138,19 @@ We use an ABB IRB 120 articulated robotic arm with 6 degree of freedom. The inve
 
 ### Generating new samples
 
-We used a VAE to generate new samples of brushstrokes. The animation below demonstrates the navigation over three latent vectos of a tested VAE:
+We used Variational Autoeconders (VAEs) to generate new samples of brushstrokes. The animation below demonstrates the navigation over three latent vectos of a tested VAE:
 <p align="center"> <img width="60%" src="./media/generated_brushes.gif"> </p>
+
+#### Architectures
+We compare 2 different architectures to generate reconstructions and interpolations in the latent space. We show that an MLP achieves a lower - Elbo than a CNN due to the simplicity of the data, similar to the MNIST dataset. 
+
+The MLP architecture is composed by:
+An encoder, which has 3 fully connected (fc) layers with the first taking 1024 pixels (32 x 32) followed by a relu nonlinearity activation function. The rest of the other fc layers are projections of mu and log variance into an 8-dimensional space. 
+A generator that takes in 8-dimensional latent variables with Normal distributed noise and outputs a 1024-dimensional vector after 2 fc layers. 
+
+The CNN architecture is composed by:
+An encoder, which has 3 convolutional (conv) layers followed by a Leaky relu non-linearity activation function. 2 fc layers with the same activation function follow the conv layers with a final fc layer for mu and log variance projections.
+A generator composed by 2 blocks of fc, leaky relu and batch normalization, followed by 2 transposed conv layers, leaky relu and batch normalization and a final conv layer.
 
 [WIP]
 We also compared different architectures for the VAE to evaluate their performance (different from the model that generated the above gif):
